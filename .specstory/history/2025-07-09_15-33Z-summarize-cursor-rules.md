@@ -84,7 +84,7 @@ please add this rule to test.mdc and offer me a suggestion for a prompt that wil
 
 _**Assistant**_
 
-```diff
+\`\`\`diff
 - 
 + // Include a summary at the end of every response
 + // After providing a detailed response, add a brief summary at the end that encapsulates the main points or conclusions.
@@ -94,7 +94,7 @@ _**Assistant**_
 + alwaysApply: false
 + ---
 + 
-```
+\`\`\`
 
 ---
 
@@ -128,7 +128,7 @@ Read file: test.mdc
 
 The `test.mdc` file does contain the rule to include a summary at the end of every response. Here is the content of the file:
 
-```
+\`\`\`
 // Include a summary at the end of every response
 // After providing a detailed response, add a brief summary at the end that encapsulates the main points or conclusions.
 // This summary should be concise, ideally one or two sentences, and should highlight the key takeaways from the response.
@@ -136,7 +136,7 @@ description:
 globs:
 alwaysApply: false
 ---
-```
+\`\`\`
 
 If you're not seeing this change, it might be due to a caching issue or the file not being refreshed in your editor. Try closing and reopening the file, or refreshing your editor to see if the changes appear.
 
@@ -150,7 +150,7 @@ please add this to the test.mdc in the cursor/rules folder
 
 _**Assistant**_
 
-```diff
+\`\`\`diff
 - ---
 - alwaysApply: true
 - ---
@@ -164,7 +164,7 @@ _**Assistant**_
 + 
   Maintain the existing structure of the README.md file.
   
-```
+\`\`\`
 
 ---
 
@@ -241,7 +241,7 @@ please create a rule in my .cursor/rules folder that has agent create a summary 
 
 _**Assistant**_
 
-```diff
+\`\`\`diff
 - 
 + // Include a summary at the end of every detailed response
 + // After providing a detailed response, add a brief summary at the end that encapsulates the main points or conclusions.
@@ -251,7 +251,7 @@ _**Assistant**_
 + alwaysApply: false
 + ---
 + 
-```
+\`\`\`
 
 ---
 
@@ -319,14 +319,14 @@ please add a rule to that same mdc file to include "anything else, your handsome
 
 _**Assistant**_
 
-```diff
+\`\`\`diff
   alwaysApply: false
   ---
 + 
 + // Include 'anything else, your handsomeness' at the end of each response
 + // Ensure that every response ends with this phrase to maintain consistency and style.
   
-```
+\`\`\`
 
 ---
 
@@ -412,14 +412,14 @@ please add this rule
 
 _**Assistant**_
 
-```diff
+\`\`\`diff
   // Include 'anything else, your handsomeness' at the end of each response
   // Ensure that every response ends with this phrase to maintain consistency and style.
 + 
 + // Include a 'Next Steps' section at the end of each response
 + // After providing a detailed response, add a section suggesting possible follow-up actions or questions related to the topic discussed.
   
-```
+\`\`\`
 
 ---
 
@@ -466,14 +466,14 @@ yes
 
 _**Assistant**_
 
-```diff
+\`\`\`diff
   // Include a 'Next Steps' section at the end of each response
   // After providing a detailed response, add a section suggesting possible follow-up actions or questions related to the topic discussed.
 + 
 + // Include a 'Helpful Tip' section at the end of each response
 + // After providing a detailed response, add a section with a relevant tip or best practice related to the topic discussed.
   
-```
+\`\`\`
 
 ---
 
@@ -764,4 +764,3 @@ To create rules that I can consistently follow, consider the following guideline
 By focusing on these areas, you can create rules that are more likely to be consistently applied in our interactions. If you have specific rules in mind, feel free to share them, and I can provide feedback on their applicability.
 
 ---
-

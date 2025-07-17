@@ -99,18 +99,18 @@ It seems there is a persistent issue accessing the `yposfgold.com` directory. Le
 
 ---
 
-```bash
+\`\`\`bash
 cd /Users/paulmaloney/Library/CloudStorage/Dropbox/iCloud/RiverTies/development-projects/yposfgold.com && git rev-parse --is-inside-work-tree
-```
+\`\`\`
 
-```
+\`\`\`
 paulmaloney@MacBook-Pro-2024 yposfgold.com % cd /Users/paulmaloney/Library/CloudStorage/Dropbox/iCloud/River
 Ties/development-projects/yposfgold.com && git rev-parse --is-inside-work-tree                   cd /Users/p
 aulmaloney/Library/CloudStorage/Dropbox/iCloud/RiverTies/development-projects/yposfgold.com && git rev-parse
  --is-inside-work-tree
 fatal: not a git repository (or any of the parent directories): .git
 paulmaloney@MacBook-Pro-2024 yposfgold.com %
-```
+\`\`\`
 
 ---
 
@@ -169,11 +169,11 @@ Let's start by initializing the Git repository and committing your changes. I'll
 
 ---
 
-```bash
+\`\`\`bash
 git init && git add . && git commit -m "Initial commit"
-```
+\`\`\`
 
-```
+\`\`\`
 paulmaloney@MacBook-Pro-2024 yposfgold.com % git init && git add . && git commit -m "Initial commit"
 Initialized empty Git repository in /Users/paulmaloney/Library/CloudStorage/Dropbox/iCloud/RiverTies/develop
 ment-projects/yposfgold.com/.git/
@@ -194,7 +194,7 @@ ment-projects/yposfgold.com/.git/
  create mode 100644 _docs/Style_Guide.md
  create mode 100644 _docs/Tech_Stack.md
 paulmaloney@MacBook-Pro-2024 yposfgold.com %
-```
+\`\`\`
 
 ---
 
@@ -226,11 +226,11 @@ I'll run these commands for you. Let's start by updating Homebrew and then insta
 
 ---
 
-```bash
+\`\`\`bash
 brew update && brew install gh
-```
+\`\`\`
 
-```
+\`\`\`
 paulmaloney@MacBook-Pro-2024 yposfgold.com % brew update && brew install gh
 ==> Updating Homebrew...
 Updated 2 taps (homebrew/core and homebrew/cask).
@@ -287,7 +287,7 @@ Removing: /Users/paulmaloney/Library/Caches/Homebrew/gh--2.74.1... (12.4MB)
 zsh completions have been installed to:
   /opt/homebrew/share/zsh/site-functions
 paulmaloney@MacBook-Pro-2024 yposfgold.com %
-```
+\`\`\`
 
 ---
 
@@ -296,4 +296,3 @@ The GitHub CLI has been successfully installed and updated to the latest version
 Let's proceed with creating a new repository using the GitHub CLI. Please provide the name you would like for the new repository, and let me know if you want it to be public or private.
 
 ---
-

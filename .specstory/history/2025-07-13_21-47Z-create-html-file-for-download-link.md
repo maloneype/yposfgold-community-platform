@@ -25,7 +25,7 @@ I'll create an HTML file with the content you specified. Let me create this file
 
 ---
 
-```diff
+\`\`\`diff
 - 
 + <!DOCTYPE html>
 + <html>
@@ -37,7 +37,7 @@ I'll create an HTML file with the content you specified. Let me create this file
 +   <a href="data:application/zip;base64,YOUR_BASE64_STRING_HERE" download="ypo-artifacts.zip">Download ypo-artifacts.zip</a>
 + </body>
 + </html> 
-```
+\`\`\`
 
 ---
 
@@ -63,4 +63,3 @@ The file is ready to use. You'll need to replace `YOUR_BASE64_STRING_HERE` with 
 Anything else, your handsomeness?
 
 ---
-

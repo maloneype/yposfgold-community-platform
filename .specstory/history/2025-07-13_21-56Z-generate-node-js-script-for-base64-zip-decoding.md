@@ -37,7 +37,7 @@ Now I'll create a Node.js script that decodes the base64 string and saves it as 
 
 ---
 
-```diff
+\`\`\`diff
 - 
 + const fs = require('fs');
 + 
@@ -69,7 +69,7 @@ Now I'll create a Node.js script that decodes the base64 string and saves it as 
 + 
 + // Run the decoding function
 + decodeBase64ToFile(); 
-```
+\`\`\`
 
 ---
 
@@ -78,17 +78,17 @@ Perfect! I've created a Node.js script called `decode-base64.js` that will decod
 
 ---
 
-```bash
+\`\`\`bash
 node decode-base64.js
-```
+\`\`\`
 
-```
+\`\`\`
 paulmaloney@MacBook-Pro-2024 yposfgold.com % node decode-base64.js
 ✅ Successfully decoded base64 string and saved as ypo-artifacts.zip
 📁 File size: 1243 bytes
 📊 File created successfully with size: 1243 bytes
 paulmaloney@MacBook-Pro-2024 yposfgold.com %
-```
+\`\`\`
 
 ---
 
@@ -97,15 +97,15 @@ Excellent! The script worked perfectly. Let me verify that the zip file was crea
 
 ---
 
-```bash
+\`\`\`bash
 ls -la ypo-artifacts.zip
-```
+\`\`\`
 
-```
+\`\`\`
 paulmaloney@MacBook-Pro-2024 yposfgold.com % ls -la ypo-artifacts.zip
 -rw-r--r--@ 1 paulmaloney  staff  1243 Jul 13 14:57 ypo-artifacts.zip
 paulmaloney@MacBook-Pro-2024 yposfgold.com %
-```
+\`\`\`
 
 ---
 
@@ -114,11 +114,11 @@ Perfect! The script has successfully created the `ypo-artifacts.zip` file. Let m
 
 ---
 
-```bash
+\`\`\`bash
 unzip -l ypo-artifacts.zip
-```
+\`\`\`
 
-```
+\`\`\`
 paulmaloney@MacBook-Pro-2024 yposfgold.com % unzip -l ypo-artifacts.zip
 Archive:  ypo-artifacts.zip
   End-of-central-directory signature not found.  Either this file is not
@@ -128,7 +128,7 @@ Archive:  ypo-artifacts.zip
 unzip:  cannot find zipfile directory in one of ypo-artifacts.zip or
         ypo-artifacts.zip.zip, and cannot find ypo-artifacts.zip.ZIP, period.
 paulmaloney@MacBook-Pro-2024 yposfgold.com %
-```
+\`\`\`
 
 ---
 
@@ -137,15 +137,15 @@ It seems the base64 string might not be a complete zip file or might be truncate
 
 ---
 
-```bash
+\`\`\`bash
 file ypo-artifacts.zip
-```
+\`\`\`
 
-```
+\`\`\`
 paulmaloney@MacBook-Pro-2024 yposfgold.com % file ypo-artifacts.zip
 ypo-artifacts.zip: Zip archive data, at least v2.0 to extract, compression method=deflate
 paulmaloney@MacBook-Pro-2024 yposfgold.com %
-```
+\`\`\`
 
 ---
 
@@ -154,11 +154,11 @@ Interesting! The file is indeed recognized as a zip archive. Let me try a differ
 
 ---
 
-```bash
+\`\`\`bash
 hexdump -C ypo-artifacts.zip | head -10
-```
+\`\`\`
 
-```
+\`\`\`
 paulmaloney@MacBook-Pro-2024 yposfgold.com % hexdump -C ypo-artifacts.zip | head -10
 00000000  50 4b 03 04 14 00 00 00  08 00 d1 ae ed 5a d0 4a  |PK...........Z.J|
 00000010  0e 92 0b 05 00 00 0f 09  00 00 0b 00 00 00 64 6f  |..............do|
@@ -171,7 +171,7 @@ paulmaloney@MacBook-Pro-2024 yposfgold.com % hexdump -C ypo-artifacts.zip | head
 00000080  7a b3 1c 51 e3 02 7d 5a  df d0 bb 15 5d 3a 53 d3  |z..Q..}Z....]:S.|
 00000090  45 2b 7c 52 81 ae 85 15  bb b2 84 d6 46 24 7c d6  |E+|R........F$|.|
 paulmaloney@MacBook-Pro-2024 yposfgold.com %
-```
+\`\`\`
 
 ---
 
@@ -180,11 +180,11 @@ Great! I can see the zip file starts with the correct PK header (50 4b 03 04) an
 
 ---
 
-```bash
+\`\`\`bash
 python3 -c "import zipfile; z = zipfile.ZipFile('ypo-artifacts.zip'); print('Files in archive:'); [print(f'  {f}') for f in z.namelist()]"
-```
+\`\`\`
 
-```
+\`\`\`
 <archive:'); [print(f'  {f}') for f in z.namelist()]"
 Traceback (most recent call last):
   File "<string>", line 1, in <module>
@@ -196,7 +196,7 @@ n _RealGetContents
     raise BadZipFile("File is not a zip file")
 zipfile.BadZipFile: File is not a zip file
 paulmaloney@MacBook-Pro-2024 yposfgold.com %
-```
+\`\`\`
 
 ---
 
@@ -205,16 +205,16 @@ It appears the base64 string might be incomplete or corrupted. Let me check the 
 
 ---
 
-```bash
+\`\`\`bash
 node -e "console.log('Base64 string length:', 'UEsDBBQAAAAIANGu7VrQSg6SCwUAAA8JAAALAAAAZG9jcy9QUkQubWRtVstuGzcU3ecrLhqgGKF6JG67kbtRrchxEceC4jQJisKgOBwNIw7J8iFHXRT9iH5hv6Tncka2EXSlGXJInnvPg3pO6+DqLBNt1B9ZB9UpmyItncz8RNV6sxxR4wJ9Wt/QuxVdOlPTRSt8UoGuhRW7soTWRiR81j179vw5vZzSzUGFg1b3zya0zsG7qOZ0gQ+DMNTmbdlSDttoyytF0s6SsDVJ13XZallGxpiWJtfa7jBpXbayBzkmdShgq3ud2oLv/eYN6c67kOJoTJ3qtti9RlUyuXCkygfXaKMilRW+dcnNVCe0meHZKqwpY5E8yqIqe+NEPXzdqSRqkcRkK6Kq+7NJxOikLjixWNSdtlhrlcFO/Vmkap2AHbM5tVjzUBZXqmw9SW6iyqMMR89TU1qqqHcWp3CXohRGbLXR6UjJUZdN0h4bD92LdNCiH50kZQWjCrLVCUXnoKYg4FaEnUr0PuLrOf318sWLoTeRvutfo3c5oi/aAqww5nhOwZkywL1XfWnj05l3+NVhTEaJYFHcnWsaLRVGDvg5zTYaaPD6MDkc2mr/OIYKc/f4CmqDTjl+vWg8QORyFjHmrnQq0rd0gR+oSkMJc3qXREg9X9LFNFFNgzbog0LnnIFUmqDwrLl0iO2tSkY3x9lrFdw+j85pmzXkjRkf1EHjQKbxM7YAqwmF23h+6lHhRRWGztDBzM0dY4NE6gt4iHprgJbdcDallRJMRgT613rXTt5APuZhdE6Lp8KmamjzJErnVc09qMFxzJ6lDZiveuG/0ZGlRdWgeWqC605GAJh09KDQ6L06tf7OWXPEBstHT0TFchFAe5JsxAfr3gcnC4zp1cer1YMHStW9A4y2e2DAkkVR/5rVT9UTJwK+sBkNY/cfx6VTPDQkBx82WOVVb5Vzum0xRbdut8No1ajIFM46V4OBEUuApQyyXdDcverW0RZO+wLr1ao+JzXdTcf0zSKSeNDPFUlhIYOyZ+IDYinDoy3OCqP/hN/ef5x+MyqkfT+lt85OVmCFlQb4TwMSEN4pmSHV45x++XBbzD0Ekc9boyVb2ztWZW9ih4I4VTiYNj8vLsb/732qRF0XRxu9Hbgrc27ymZdeLtebSVCiBnMSymcKShWFrxmTM5rSlZUOmRtEUnS2WqBBN7drrC5hZci4nYZ3qkvn0IzZSki1dW5PNwtUwcEpdlwAB2PhF596JN29CzXUwTA4u7hxECAjQHTEYsfq5eQIPaHNe2UpKNgttpQtL+Njd+ixy2ncWxQec30asuVijl7LYjrBnkVvC9drFcr1AHvM6acz3kfU8DAIPKcWSMDngwNL3CnZchLIPQIBduf3u/I+7eoSIFIy4D5T5/ThYnHJd443mg+harG5WoyphVExzFdWTAXJtcMSgOh/J40OMVFdspoqVOrRAs6aYkNIjHYBrq4pe3jRZdlOGggWgI8IEfi7QeNhDwfmuyK/gUmrUAy08u/f//RKNhzgnC0JJ4DGe+2xOWzB6THqU+aHKW3QmE54hOI12xgfl8S5/nWNhAG148e78HR5zr66Uof7r0rlypjTb59cDqXZEIICbI+As0rBZr+Xnqwyg8DdjjC0tQilsl'.length); console.log('Is valid base64:', /^[A-Za-z0-9+/]*={0,2}$/.test('UEsDBBQAAAAIANGu7VrQSg6SCwUAAA8JAAALAAAAZG9jcy9QUkQubWRtVstuGzcU3ecrLhqgGKF6JG67kbtRrchxEceC4jQJisKgOBwNIw7J8iFHXRT9iH5hv6Tncka2EXSlGXJInnvPg3pO6+DqLBNt1B9ZB9UpmyItncz8RNV6sxxR4wJ9Wt/QuxVdOlPTRSt8UoGuhRW7soTWRiR81j179vw5vZzSzUGFg1b3zya0zsG7qOZ0gQ+DMNTmbdlSDttoyytF0s6SsDVJ13XZallGxpiWJtfa7jBpXbayBzkmdShgq3ud2oLv/eYN6c67kOJoTJ3qtti9RlUyuXCkygfXaKMilRW+dcnNVCe0meHZKqwpY5E8yqIqe+NEPXzdqSRqkcRkK6Kq+7NJxOikLjixWNSdtlhrlcFO/Vmkap2AHbM5tVjzUBZXqmw9SW6iyqMMR89TU1qqqHcWp3CXohRGbLXR6UjJUZdN0h4bD92LdNCiH50kZQWjCrLVCUXnoKYg4FaEnUr0PuLrOf318sWLoTeRvutfo3c5oi/aAqww5nhOwZkywL1XfWnj05l3+NVhTEaJYFHcnWsaLRVGDvg5zTYaaPD6MDkc2mr/OIYKc/f4CmqDTjl+vWg8QORyFjHmrnQq0rd0gR+oSkMJc3qXREg9X9LFNFFNgzbog0LnnIFUmqDwrLl0iO2tSkY3x9lrFdw+j85pmzXkjRkf1EHjQKbxM7YAqwmF23h+6lHhRRWGztDBzM0dY4NE6gt4iHprgJbdcDallRJMRgT613rXTt5APuZhdE6Lp8KmamjzJErnVc09qMFxzJ6lDZiveuG/0ZGlRdWgeWqC605GAJh09KDQ6L06tf7OWXPEBstHT0TFchFAe5JsxAfr3gcnC4zp1cer1YMHStW9A4y2e2DAkkVR/5rVT9UTJwK+sBkNY/cfx6VTPDQkBx82WOVVb5Vzum0xRbdut8No1ajIFM46V4OBEUuApQyyXdDcverW0RZO+wLr1ao+JzXdTcf0zSKSeNDPFUlhIYOyZ+IDYinDoy3OCqP/hN/ef5x+MyqkfT+lt85OVmCFlQb4TwMSEN4pmSHV45x++XBbzD0Ekc9boyVb2ztWZW9ih4I4VTiYNj8vLsb/732qRF0XRxu9Hbgrc27ymZdeLtebSVCiBnMSymcKShWFrxmTM5rSlZUOmRtEUnS2WqBBN7drrC5hZci4nYZ3qkvn0IzZSki1dW5PNwtUwcEpdlwAB2PhF596JN29CzXUwTA4u7hxECAjQHTEYsfq5eQIPaHNe2UpKNgttpQtL+Njd+ixy2ncWxQec30asuVijl7LYjrBnkVvC9drFcr1AHvM6acz3kfU8DAIPKcWSMDngwNL3CnZchLIPQIBduf3u/I+7eoSIFIy4D5T5/ThYnHJd443mg+harG5WoyphVExzFdWTAXJtcMSgOh/J40OMVFdspoqVOrRAs6aYkNIjHYBrq4pe3jRZdlOGggWgI8IEfi7QeNhDwfmuyK/gUmrUAy08u/f//RKNhzgnC0JJ4DGe+2xOWzB6THqU+aHKW3QmE54hOI12xgfl8S5/nWNhAG148e78HR5zr66Uof7r0rlypjTb59c8DqXZEIICbI+As0rBZr+Xnqwyg8DdjjC0tQilsl'));"
-```
+\`\`\`
 
-```
+\`\`\`
 <ypjTb59c8DqXZEIICbI+As0rBZr+Xnqwyg8DdjjC0tQilsl'));"
 Base64 string length: 1658
 Is valid base64: true
 paulmaloney@MacBook-Pro-2024 yposfgold.com %
-```
+\`\`\`
 
 ---
 
@@ -223,7 +223,7 @@ The base64 string appears to be valid. The issue might be that the zip file is i
 
 ---
 
-```diff
+\`\`\`diff
   function decodeBase64ToFile() {
       try {
 +         console.log('🔍 Analyzing base64 string...');
@@ -256,9 +256,9 @@ The base64 string appears to be valid. The issue might be that the zip file is i
 +         console.log('💾 Writing file to ypo-artifacts.zip...');
           fs.writeFileSync('ypo-artifacts.zip', decodedBuffer);
           
-```
+\`\`\`
 
-```diff
+\`\`\`diff
               const stats = fs.statSync('ypo-artifacts.zip');
               console.log(`📊 File created successfully with size: ${stats.size} bytes`);
 +             
@@ -277,7 +277,7 @@ The base64 string appears to be valid. The issue might be that the zip file is i
 +             }
           }
           
-```
+\`\`\`
 
 ---
 
@@ -286,11 +286,11 @@ Let me run the updated script to see the detailed analysis:
 
 ---
 
-```bash
+\`\`\`bash
 node decode-base64.js
-```
+\`\`\`
 
-```
+\`\`\`
 paulmaloney@MacBook-Pro-2024 yposfgold.com % node decode-base64.js
 🔍 Analyzing base64 string...
 📏 Base64 string length: 1658 characters
@@ -308,7 +308,7 @@ Require stack:
 - /Users/paulmaloney/Library/CloudStorage/Dropbox/iCloud/RiverTies/development-projects/yposfgold.com/decode
 -base64.js
 paulmaloney@MacBook-Pro-2024 yposfgold.com %
-```
+\`\`\`
 
 ---
 
@@ -317,15 +317,15 @@ I see the issue - the base64 string length is not a multiple of 4, which suggest
 
 ---
 
-```diff
+\`\`\`diff
           if (base64String.length % 4 !== 0) {
               console.log('⚠️  Warning: Base64 string length is not a multiple of 4');
 +             console.log('   This may indicate the string is incomplete or truncated');
           }
           
-```
+\`\`\`
 
-```diff
+\`\`\`diff
               console.log(`📊 File created successfully with size: ${stats.size} bytes`);
               
 -             // Try to validate the zip file
@@ -354,7 +354,7 @@ I see the issue - the base64 string length is not a multiple of 4, which suggest
 +             console.log('   - Note: The base64 string may be incomplete, which could affect file integrity');
           }
           
-```
+\`\`\`
 
 ---
 
@@ -363,11 +363,11 @@ Now let me run the final version of the script:
 
 ---
 
-```bash
+\`\`\`bash
 node decode-base64.js
-```
+\`\`\`
 
-```
+\`\`\`
 paulmaloney@MacBook-Pro-2024 yposfgold.com % node decode-base64.js
 🔍 Analyzing base64 string...
 📏 Base64 string length: 1658 characters
@@ -390,7 +390,7 @@ paulmaloney@MacBook-Pro-2024 yposfgold.com % node decode-base64.js
    - File appears to be a ZIP archive (starts with PK signature)
    - Note: The base64 string may be incomplete, which could affect file integrity
 paulmaloney@MacBook-Pro-2024 yposfgold.com %
-```
+\`\`\`
 
 ---
 
@@ -401,7 +401,7 @@ Your Node.js script to decode the base64 string and save it as `ypo-artifacts.zi
 
 **decode-base64.js** (already in your directory):
 
-```js
+\`\`\`js
 const fs = require('fs');
 
 // The base64-encoded zip file content
@@ -469,7 +469,7 @@ function decodeBase64ToFile() {
 
 // Run the decoding function
 decodeBase64ToFile();
-```
+\`\`\`
 
 ---
 
@@ -613,7 +613,7 @@ I'll create a Node.js script that creates the "grok-downloads" folder and writes
 
 ---
 
-```diff
+\`\`\`diff
 - 
 + const fs = require('fs');
 + const path = require('path');
@@ -764,7 +764,7 @@ I'll create a Node.js script that creates the "grok-downloads" folder and writes
 + 
 + // Run the script
 + createArtifacts(); 
-```
+\`\`\`
 
 ---
 
@@ -773,11 +773,11 @@ Now let me test the script to make sure it works correctly:
 
 ---
 
-```bash
+\`\`\`bash
 node save-artifacts.js
-```
+\`\`\`
 
-```
+\`\`\`
 paulmaloney@MacBook-Pro-2024 yposfgold.com % node save-artifacts.js
 🚀 Starting artifact creation...
 📁 Created folder: grok-downloads
@@ -793,7 +793,7 @@ paulmaloney@MacBook-Pro-2024 yposfgold.com % node save-artifacts.js
    - Style_Guide.md
    - Features_List.md
 paulmaloney@MacBook-Pro-2024 yposfgold.com %
-```
+\`\`\`
 
 ---
 
@@ -802,11 +802,11 @@ Perfect! Let me verify that the files were created correctly:
 
 ---
 
-```bash
+\`\`\`bash
 ls -la grok-downloads/
-```
+\`\`\`
 
-```
+\`\`\`
 paulmaloney@MacBook-Pro-2024 yposfgold.com % ls -la grok-downloads/
 total 32
 drwxr-xr-x@  6 paulmaloney  staff   192 Jul 13 17:55 .
@@ -816,7 +816,7 @@ drwxr-xr-x@ 10 paulmaloney  staff   320 Jul 13 17:55 ..
 -rw-r--r--@  1 paulmaloney  staff  1040 Jul 13 17:55 Style_Guide.md
 -rw-r--r--@  1 paulmaloney  staff  1891 Jul 13 17:55 Tech_Stack.md
 paulmaloney@MacBook-Pro-2024 yposfgold.com %
-```
+\`\`\`
 
 ---
 
@@ -825,11 +825,11 @@ Excellent! The script has successfully created all the files. Let me also verify
 
 ---
 
-```bash
+\`\`\`bash
 head -10 grok-downloads/PRD.md
-```
+\`\`\`
 
-```
+\`\`\`
 # Product Requirements Document (PRD) for YPO SF Gold Chapter Management Platform
 
 ## 1. Overview
@@ -856,7 +856,7 @@ t links, types like members_only); Directory (searchable profiles, opt-in sharin
 tadata for event linking); Admin Panel (URL imports, manual entry, user management); Profile Editing; Theme
 Toggle (festive/modern).
 
-```
+\`\`\`
 
 ---
 
@@ -866,9 +866,9 @@ Perfect! The script has successfully created all the Markdown files with the exa
 
 1. **Save the script** as `save-artifacts.js` (already done)
 2. **Run it** in your terminal:
-   ```bash
+   \`\`\`bash
    node save-artifacts.js
-   ```
+   \`\`\`
 
 ## What the Script Does
 
@@ -892,7 +892,7 @@ The script (`save-artifacts.js`) will:
 ## Output
 
 When you run the script, you'll see output like:
-```
+\`\`\`
 🚀 Starting artifact creation...
 📁 Created folder: grok-downloads
 ✅ Created: PRD.md
@@ -906,7 +906,7 @@ When you run the script, you'll see output like:
    - Tech_Stack.md
    - Style_Guide.md
    - Features_List.md
-```
+\`\`\`
 
 The script is ready to use and has been tested successfully!
 
@@ -923,4 +923,3 @@ Created a Node.js script that generates a "grok-downloads" folder with four comp
 anything else, your handsomeness
 
 ---
-
