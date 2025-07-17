@@ -18,6 +18,7 @@
 - **Profile Editing**: Update photo, email, phone (auto-dash, valid format), hobbies/passions (open field); validation (email regex, phone 10-digit); officer title/role read-only.
 - **Authentication**: OAuth (Google/Facebook, skip 2FA if provider-enforced), magic email with TOTP 2FA, 90-day persistent sessions (revoke on anomalies). [IMPLEMENTED]
 - **Theme Toggle**: Festive (pastels, Poppins/Lora, animations) and modern (grays, Inter, minimal). [IMPLEMENTED]
+- **Notifications**: In-app notifications for events and announcements; notification preferences in user profiles; notification bell with unread count; admin option to trigger notifications. [IMPLEMENTED]
 - **Other Integrations**: Future: Stripe/PayPal (payment processing), Cvent API (event management—not phase 1); current: Mailchimp (newsletters), Google Analytics/Mixpanel (tracking), Zoom (virtual events), Google Drive (file storage), Google Maps (.ics embeds), Zapier/Slack (future).
 - **UI Enhancements**: UI includes theme toggle (festive/modern) with v0-generated wireframes for login, dashboard, and admin panel, ensuring mobile-first design. [IMPLEMENTED]
 
@@ -47,14 +48,14 @@
   - Theme system with toggle between festive and modern themes
   - Authentication with Clerk (OAuth, magic links, 2FA TOTP, persistent sessions)
   - Core UI components (layout, dashboard, profile, settings pages)
-- **In Progress**:
   - Member directory with search functionality
   - Events listing with Cvent integration
   - Photo upload and management
-  - Admin panel for user and content management
+  - Admin panel for user and content management (users, events, announcements, photos)
+  - Notifications system with preferences, notification bell, and event notifications
+- **In Progress**:
+  - Analytics dashboard
 - **Pending**:
   - Advanced integrations (Stripe, Zoom, etc.)
-  - Notifications system
-  - Analytics dashboard
 
 Last Updated: July 28, 2025

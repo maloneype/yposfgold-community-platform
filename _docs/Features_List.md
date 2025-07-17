@@ -30,18 +30,18 @@
 ### Epic: Events Listing
 - **User Story**: As a user, I can view events and add them to my calendar so that I can stay informed and attend.
   - **Tasks**: 
-    - [ ] Implement YPO URL scraper in Convex actions for event data.
-    - [ ] Create admin interface for Cvent URL scrape or manual entry (edit before save).
+    - [x] Implement YPO URL scraper in Convex actions for event data.
+    - [x] Create admin interface for Cvent URL scrape or manual entry (edit before save).
     - [x] Design event list with alternating photo/description layout.
-    - [ ] Add "Register" button linking to Cvent and "Add to Calendar" button generating .ics file.
+    - [x] Add "Register" button linking to Cvent and "Add to Calendar" button generating .ics file.
 
 ### Epic: Photos Management
 - **User Story**: As a user, I can upload photos to associate with events so that I can share memories.
   - **Tasks**: 
-    - [ ] Enable uploads from native apps (Android/iPhone Photos, Mac Photos).
-    - [ ] Support multiple uploads at once.
-    - [ ] Auto-tag with date/GPS metadata and group by event (miscellaneous folder if no match).
-    - [ ] Optimize high-res/live photos (<2MB) using Sharp.
+    - [x] Enable uploads from native apps (Android/iPhone Photos, Mac Photos).
+    - [x] Support multiple uploads at once.
+    - [x] Auto-tag with date/GPS metadata and group by event (miscellaneous folder if no match).
+    - [x] Optimize high-res/live photos (<2MB) using Sharp.
 
 ### Epic: Admin Panel
 - **User Story**: As an admin, I can manage users, events, and announcements so that I can maintain the platform.
@@ -56,9 +56,9 @@
 - **User Story**: As a user, I can set notification preferences and track usage so that I stay updated and improve the platform.
   - **Tasks**: 
     - [x] Add notification preferences (email/push) in profiles.
-    - [ ] Notify on event create/edit if opted-in.
+    - [x] Notify on event create/edit if opted-in.
     - [x] Integrate Google Analytics and Mixpanel for tracking.
-    - [ ] Admin option to trigger notifications during event creation.
+    - [x] Admin option to trigger notifications during event creation.
 
 ### Epic: Future Integrations
 - **User Story**: As an admin, I can integrate future tools so that the platform evolves.
