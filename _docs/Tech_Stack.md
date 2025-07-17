@@ -1,30 +1,28 @@
 # Tech Stack for YPO SF Gold Platform
 
 ## Frontend
-- Framework: Next.js (with React 18; built-in routing/SSR for better mobile performance and SEO on public pages like events).
-- UI Library: Material-UI 5 (for components like directories/forms) + Tailwind CSS 3 (utility classes; mobile-first utilities emphasized, e.g., sm: breakpoints).
-- Animations: Framer Motion 12 (for festive theme effects).
-- State: React Context API.
-- HTTP: Axios.
-- Theme: Dual toggle (festive: Poppins/Lora fonts, pastels, watercolor animations; modern: Inter font, grays/blues, minimal). Use CSS custom properties for dynamic switching.
+- **Framework**: Next.js (React 18, SSR/SEO, mobile-first routing).
+- **UI Libraries**: Material-UI + Tailwind CSS (utility classes, responsive design), Framer Motion (animations), shadcn/ui (customizable components via copy-paste), v0 (Vercel AI UI generator for rapid prototyping, outputting React/shadcn/Tailwind code).
+- **State Management**: React Context API.
+- **HTTP**: Axios.
+- **Theme**: Dual toggle (festive: pastels #00FF7F green/#E6E6FF lavender, Poppins/Lora fonts, gentle animations; modern: #F0F5F5 gray/#007BFF blue, Inter font, minimal); CSS variables for portability.
 
-## Backend
-- Runtime: Node.js 18.
-- Framework: Express 4.
-- Database: PostgreSQL (relational for structured multi-tenant data; free on Heroku—preferred over MongoDB for ACID transactions in user/event management).
-- Auth: JWT 9 base, enhanced with Auth0 or Firebase Auth (for Google/Facebook OAuth, magic email links, 2FA support; free tiers). Persistent sessions via long-lived refresh tokens (1-year exp, secure storage in HTTP-only cookies).
-- Scraping: Cheerio (for YPO event imports to link to Cvent).
-- Images: Sharp (processing/optimization, EXIF for metadata).
-- Other: Multer for uploads.
+## Backend & DB
+- **Platform**: Convex (BaaS for reactive DB, functions, auth, storage; free Starter tier, TypeScript code, real-time sync).
+- **Auth/Security**: Convex built-in (JWT, OAuth for Google/Facebook, magic links, TOTP 2FA optional for email, 90-day persistent sessions with revocation on anomalies/IP change), end-to-end encryption (HTTPS/Web Crypto).
+- **Scraping**: Cheerio (in Convex actions for YPO URLs).
+- **Images**: Sharp (EXIF extraction, resizing/conversion in Convex Storage).
+- **Storage**: Convex Storage (uploads), Google Drive (future file sharing).
 
-## Security & Tools
-- Encryption: End-to-end via HTTPS + client-side libs (e.g., Web Crypto API).
-- Testing: Jest (multi-config: standard/fast), React Testing Library, Supertest.
-- Deployment: Netlify (frontend, free CDN), Heroku (backend/DB, free tier).
-- CI/CD: GitHub Actions.
-- Monitoring: Heroku metrics.
+## Testing & Deployment
+- **Testing**: Jest, React Testing Library, Supertest.
+- **Deployment**: Hybrid—Squarespace for static landing (yposfgold.com, branding/login redirect), Vercel for dynamic app subdomain (app.yposfgold.com, Next.js frontend), Convex for backend/DB (serverless auto-deploy).
+- **CI/CD**: GitHub Actions.
+- **Monitoring**: Convex dashboard, Pingdom (free tier).
 
-## Decisions on Differences
-- DB: Postgres over Mongo—better for relations (e.g., users <-> events <-> photos), multi-tenant queries.
-- Frontend: Next.js + Material-UI + Tailwind hybrid—Next for power, Material for speed, Tailwind for custom themes.
-- Auth Enhancements: Auth0/Firebase for user-friendly features (social/magic links/2FA)—secure, scalable.
+## Decisions
+- **Convex over Heroku/Postgres**: Simpler, free tier, real-time; Postgres-like structure via Convex tables.
+- **v0/shadcn/ui**: Rapid prototyping, customizable components alongside Material-UI/Tailwind.
+- **Auth**: Convex over Auth0 for low-friction (push-based 2FA optional, no SMS).
+
+Last Updated: July 15, 2025

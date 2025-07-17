@@ -3,7 +3,7 @@
 These are persistent rules for Cursor's AI to follow in all chats/sessions. Copy each rule's content into Cursor's AI Settings > Rules section. Rules ensure consistency with the project stack, process, and standards.
 
 ## Rule 1: Universal Style/Theme Application
-Always apply the project's style and theme standards universally to all components, pages, and panels (including admin panels, directory, events, photos). Use Material-UI ThemeProvider + Tailwind CSS variables for festive/modern toggle. Ensure consistency: No overrides; root-level provider for global application. Reference /docs/Style_Guide.md for colors, typography, components, and responsiveness. When generating or editing code, check and enforce theme portability (modular JS objects for easy new theme addition).
+Always apply the project's style and theme standards universally to all components, pages, and panels (including admin panels, directory, events). Use Material-UI ThemeProvider + Tailwind CSS variables for festive/modern toggle. Ensure consistency: No overrides; root-level provider for global application. Reference /docs/Style_Guide.md for colors, typography, components, and responsiveness. When generating or editing code, check and enforce theme portability (modular JS objects for easy new theme addition).
 
 ## Rule 2: Follow Tech Stack and Best Practices
 Code exclusively in the project's tech stack: Next.js frontend (React 18), Material-UI + Tailwind CSS + shadcn/ui (for components), Convex backend/DB (reactive queries/mutations/actions, auth, storage). Use TypeScript throughout. Follow best practices: DRY code, ESLint, testing (Jest/RTL/Supertest), mobile-first (responsive, touch-friendly), accessibility (WCAG, ARIA). Implement security: Convex auth with OAuth, magic links, 2FA TOTP, 90-day persistent sessions with revocation. Reference /docs/Tech_Stack.md for details.
@@ -12,10 +12,10 @@ Code exclusively in the project's tech stack: Next.js frontend (React 18), Mater
 Always update or reference project artifacts in Markdown (/docs/ folder): PRD.md, Tech_Stack.md, Style_Guide.md, Features_List.md, Context.md. When generating code, include JSDoc comments and append changes to relevant docs (e.g., "Added task: Implement add to calendar in Features_List.md"). Ensure code is portable (Docker for local, Convex for easy export).
 
 ## Rule 4: Project Workflow and Process
-Follow the agile workflow: High-level to concrete tasks with roll-ups (tasks → stories → epics). Reference Planning Checklist for requirements gathering. When coding, break into small tasks with checklists. Use Convex for real-time (e.g., announcements sync). Prioritize MVP timeline (live July 28, 2025).
+Follow the agile workflow: High-level to concrete tasks with roll-ups. Reference /docs/Planning_Checklist.md for requirements gathering and to resume categories (e.g., Category 5: Data Model & Technical Details). When coding, break into small tasks with checklists. Use Convex for real-time (e.g., announcements sync). Prioritize MVP timeline (live July 28, 2025).
 
 ## Rule 5: Feature Implementation Guidelines
 For features like events: Use Convex actions for scraping (Cheerio for YPO URLs), storage for photos (Sharp/EXIF), .ics generation for "add to calendar" (include location/Cvent link). Ensure opt-in privacy for data sharing. Test for 200 users/low traffic.
 
 ## Rule 6: Checklist and Documentation Maintenance
-Always reference /docs/Planning_Checklist.md for project progress and suggest updates to status (e.g., mark categories as Completed/In Progress/Pending). When generating code or features, check the checklist for relevant categories and append changes to artifacts (e.g., PRD.md, Features_List.md with "Last Updated: [Date]" - all files contained within _docs directory). Ensure all docs remain consistent and up-to-date; propose additions like version notes if needed.
+Always reference /docs/Planning_Checklist.md for project progress and suggest updates to status (e.g., mark categories as Completed/In Progress/Pending). When generating code or features, check the checklist for relevant categories and append changes to artifacts (e.g., PRD.md, Features_List.md with "Last Updated: [Date]"). Ensure all docs remain consistent and up-to-date; propose additions like version notes if needed.
