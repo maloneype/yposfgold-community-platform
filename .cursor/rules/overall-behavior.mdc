@@ -1,0 +1,15 @@
+---
+alwaysApply: true
+---
+
+// General guidelines
+Always use Markdown for documentation and README files
+Maintain the existing structure of the README.md file
+
+Include a summary at the end of every response
+After providing a detailed response, add a brief summary at the end that encapsulates the main points or conclusions.
+This summary should be concise, ideally one or two sentences, and should highlight the key takeaways from the response.
+This summary should always start with the header "SUMMARY" in all caps
+
+// Documentation
+Please maintain a Markdown file that documents a running list of each chat request
