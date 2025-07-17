@@ -1,6 +1,6 @@
 # Planning Checklist for YPO SF Gold Chapter Management Platform
 
-This checklist contains exhaustive questions to define the project upfront, grouped by category. Status: (Completed), (In Progress), (Pending). Last updated: July 16, 2025. Resume from In Progress categories.
+This checklist contains exhaustive questions to define the project upfront, grouped by category. Status: (Completed), (In Progress), (Pending), (Implemented). Last updated: July 28, 2025. Resume from In Progress categories.
 
 ## Category 1: Business & Project Overview (Completed)
 - What is the high-level vision for the platform beyond the described features? (e.g., Future expansions like forums?) Answer: Solve lack of central hub; outperform Chapter Pro by 20x UX; scalable multi-tenant; future forums/notifications/calendar.
@@ -10,7 +10,7 @@ This checklist contains exhaustive questions to define the project upfront, grou
 - Budget constraints? (e.g., Free tiers for hosting?) Answer: Free tiers (Netlify/Heroku/Convex).
 - Risks: (e.g., Data privacy issues with member info?) Answer: Privacy (opt-in); YPO scraper changes; Cvent integration.
 
-## Category 2: User Roles & Permissions (Completed)
+## Category 2: User Roles & Permissions (Implemented)
 - List all user roles: (e.g., Admin: Full access; Member: View/edit own profile; Guest: View events?) Answer: Admin (chapter manager, possibly officers), members, spouses, guest (public events).
 - For each role, what can they do? (e.g., Admin: Post announcements, approve photos.) Answer: Admin: Post announcements, create/modify events, manage users; Members/Spouses: View/edit own profile, download contacts, upload photos; Guest: View public events; Officers: Placeholder for future pages.
 - Authentication details: (e.g., Email/password, social login? 2FA?) Answer: Convex auth with OAuth, magic links, 2FA TOTP, persistent sessions (90 days)—no SMS.
@@ -33,7 +33,7 @@ This checklist contains exhaustive questions to define the project upfront, grou
 - Mobile Responsiveness: Must work on phones? Answer: Yes, mobile-first.
 - Reliability: Backup strategy? Error logging? Answer: Daily Convex snapshots, Sentry for logs, 99.9% uptime.
 
-## Category 5: Data Model & Technical Details (Completed)
+## Category 5: Data Model & Technical Details (Implemented)
 - Database Schema: Key entities? (e.g., Users: {id, photoUrl, email, phone}; Events: {id, date, photos[]}.)
   - Answer (Preliminary): 
     | Entity         | Description                           | Key Fields                                      | Indexes/Relations            |
@@ -48,19 +48,19 @@ This checklist contains exhaustive questions to define the project upfront, grou
 - Tech Preferences: Any must-use tools? (e.g., Avoid certain stacks?) Answer: Must-use: Convex, Next.js, Tailwind/Material-UI/shadcn; Avoid: SMS for 2FA/notifications.
 - Deployment: Where? (e.g., Vercel for ease.) Answer: Hybrid—Squarespace (static landing), Vercel (dynamic app), Convex (backend/DB).
 
-## Category 6: UI/UX Design (In Progress)
-- Theme: Colors, fonts, branding? (e.g., YPO logo integration?) Answer: Colors: #007BFF (primary), #FF7F50 (accents); Fonts: Poppins/Lora (festive), Inter (modern); Branding: YPO logo in header (placeholder).
-- Wireframes: High-level sketches? (Describe or link if you have.) Answer: v0 prototypes for login (multi-step auth), dashboard (announcements/events/directory), admin (user/event management); describe layouts in PRD.md.
-- User Flows: (e.g., Login -> Dashboard -> Directory.) Answer: Login (OAuth/magic) -> Consent/2FA -> Dashboard (announcements/events) -> Directory (search/profiles).
-- Error Handling: User-friendly messages? Answer: Toast notifications (e.g., "Invalid email" in theme colors).
+## Category 6: UI/UX Design (Implemented)
+- Theme: Colors, fonts, branding? (e.g., YPO logo integration?) Answer: Colors: #007BFF (primary YPO Blue for buttons/links), #FF7F50 (secondary Coral Orange for accents like admin highlights and calls-to-action); Festive palette additions: #00FF7F (Spring Green for backgrounds), #E6E6FF (Lavender for subtle gradients), #FFC107 (Amber for notifications); Modern palette: #F0F5F5 (Light Gray for backgrounds), #007BFF (Blue for accents). Fonts: Festive - Headings: Poppins (bold, 24px+ for titles), Body: Lora (serif, 16px for descriptions); Modern - All: Inter (sans-serif, 16px). Branding: Integrate YPO logo (placeholder SVG or image) in header/nav bar across all pages; ensure logo scales responsively; subtle YPO watermark or footer branding for authenticity.
+- Wireframes: High-level sketches? (Describe or link if you have.) Answer: Use v0 (Vercel AI generator) for rapid prototyping, outputting React/shadcn/Tailwind code. Key wireframes: Login page (multi-step form with OAuth buttons, magic link input, 2FA prompt if applicable—centered layout with theme toggle preview); Dashboard (grid layout: Top - Announcements carousel/slider with media previews; Middle - Events list in alternating photo/text cards; Bottom - Quick links to Directory/Photos/Profile); Admin panel (tabbed interface: Users tab with searchable table and edit forms, Events tab with create/edit forms including Cvent scrape button, Announcements tab with reorderable list and media upload); Directory (search bar at top with real-time suggestions, grid of profile cards below); Photos page (upload button, grouped galleries by event with miscellaneous fallback). Detailed layouts described in PRD.md Section 2 (e.g., events alternating layout) and Style_Guide.md (e.g., card designs).
+- User Flows: (e.g., Login -> Dashboard -> Directory.) Answer: Core flow: Login (OAuth or magic link entry) -> 2FA/Consent prompt (if first-time or required) -> Dashboard (announcements/events overview) -> Navigation to Directory (search -> view profiles) or Photos (upload -> view grouped albums) or Profile (edit fields -> save). Admin flow: From Dashboard -> Admin panel (auth-gated) -> Manage users/events/announcements. Event flow: View event card -> "Register" (redirect to Cvent) or "Add to Calendar" (download .ics). Error recovery: Any step with validation errors redirects back with toast message. All flows mobile-optimized with bottom nav bar for key sections.
+- Error Handling: User-friendly messages? Answer: Use toast notifications (via shadcn/ui or Material-UI Snackbar) for all errors/successes, styled in theme colors (e.g., red #FF0000 background for errors like "Invalid email format—please try again" with retry button; green #00FF7F for successes like "Profile updated!"). Include icons (e.g., X for error, check for success); auto-dismiss after 5s; log to Convex/Sentry for admins. Custom messages for common cases: Auth (e.g., "Magic link expired—resend?"), Uploads (e.g., "Photo too large—resized automatically"), Scraping (e.g., "Cvent URL invalid—enter manually").
 
-## Category 7: Development Workflow & Tools (Pending)
-- How will you use Grok 4? (e.g., For planning, code gen.)
-- Cursor Specifics: Any custom rules beyond my draft?
-- Testing: Types? (Unit, e2e with Cypress?)
-- CI/CD: GitHub Actions?
+## Category 7: Development Workflow & Tools (Completed)
+- How will you use Grok 4? (e.g., For planning, code gen.) Answer: Use Grok 4 as a coach/engineer for high-level planning (e.g., checklist progression, artifact updates), ideation (e.g., feature suggestions, risk mitigation), code reviews/feedback (e.g., best practices like DRY/ESLint), and generation of non-code artifacts (e.g., Markdown docs, schemas). Avoid direct code gen in Grok—defer to Cursor for actual coding/scripts to maintain separation (Grok for strategy, Cursor for implementation). Integrate user inputs iteratively, updating docs and resuming checklist.
+- Cursor Specifics: Any custom rules beyond my draft? Answer: Build on the existing Cursor_Rules.mdc (which covers stack adherence, theme application, doc updates, workflow). Add: Rule 7 - "When generating components, always include accessibility features (e.g., ARIA labels, keyboard nav) and test stubs (e.g., Jest snapshots)"; Rule 8 - "Prioritize real-time Convex queries for dynamic UI (e.g., announcements list) and include error boundaries in React components"; Rule 9 - "For v0-generated code, review and adapt to shadcn/ui + Tailwind before integration." No major changes needed—current rules are comprehensive.
+- Testing: Types? (Unit, e2e with Cypress?) Answer: Unit testing with Jest (for utils/functions, e.g., phone validation regex); Component testing with React Testing Library (RTL, for UI like profile edit form); Integration/API testing with Supertest (for Convex endpoints, e.g., event scraping actions). Add end-to-end (e2e) with Cypress for critical flows (e.g., login -> dashboard -> event add-to-calendar). Aim for 80%+ coverage; run tests in CI/CD.
+- CI/CD: GitHub Actions? Answer: Yes, use GitHub Actions for CI/CD: On push/PR—lint (ESLint), test (Jest/RTL/Supertest/Cypress), build (Next.js), and deploy preview (Vercel). On merge to main—auto-deploy to Vercel (frontend) and Convex (backend sync via code push). Include workflows for dependency scans (e.g., Dependabot) and artifact uploads (e.g., docs to /docs folder). Conventional Commits for semantic versioning.
 
-## Category 8: Maintenance & Post-Launch (Pending)
-- How to handle updates? (e.g., Bug reports via platform?)
-- Analytics: Track usage? (e.g., Google Analytics.)
-- Documentation: Who maintains? (You + AI agents.)
+## Category 8: Maintenance & Post-Launch (Completed)
+- How to handle updates? (e.g., Bug reports via platform?) Answer: Use GitHub Issues in the "ypo-sf-gold-platform" repo for bug reports, feature requests, and updates (labeling: bug, enhancement, question). Integrate in-app feedback form (simple Convex mutation to log issues directly to DB, notifying admins via email/Slack Zapier). Post-launch updates via agile iterations: Weekly reviews of logs/Sentry errors; deploy fixes via GitHub Actions/Vercel. For major updates (e.g., future forums), follow roadmap in PRD.md with user surveys for prioritization. Admin dashboard includes a "Report Issue" button linking to GitHub.
+- Analytics: Track usage? (e.g., Google Analytics.) Answer: Yes, integrate Google Analytics (free tier) for basic tracking (page views, user sessions, events like logins/uploads) and Mixpanel (free tier) for advanced user behavior (e.g., feature interaction rates, drop-offs in flows). Track success metrics from PRD.md (e.g., 70% monthly active users via GA sessions, 80% feature use via Mixpanel events). Admin panel includes a analytics summary dashboard pulling from these (e.g., via Convex functions embedding GA/Mixpanel APIs). Ensure GDPR compliance with anonymized data and opt-out options.
+- Documentation: Who maintains? (You + AI agents.) Answer: Primary: You (the user) as project owner for decisions/approvals; Grok 4/Cursor AI for iterative updates (e.g., auto-append changes to Markdown artifacts like PRD.md during planning/coding). Post-launch: Use GitHub README.md and /docs folder for all artifacts; AI assists in generating release notes/changelogs via Conventional Commits. Schedule quarterly reviews to update docs (e.g., add new features to Features_List.md). For user-facing docs, add a "Help/FAQ" page in the app pulling from Markdown sources.
