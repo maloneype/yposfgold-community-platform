@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Default (Modern) Theme Variables */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+ 
+    --primary: 213 94% 50%; /* #007BFF YPO Blue */
+    --primary-foreground: 210 40% 98%;
+ 
+    --secondary: 16 100% 66%; /* #FF7F50 Coral Orange */
+    --secondary-foreground: 0 0% 100%;
+ 
+    --muted: 199 20% 96%; /* #F0F5F5 Light Gray */
+    --muted-foreground: 215.4 16.3% 46.9%;
+ 
+    --accent: 213 94% 50%; /* #007BFF for accents */
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 213 94% 50%;
+ 
+    --radius: 0.5rem;
+
+    /* Custom Theme Variables */
+    --theme-primary: #007BFF;
+    --theme-secondary: #FF7F50;
+    --theme-background: #F0F5F5;
+    --theme-surface: #FFFFFF;
+    --theme-text-primary: #333333;
+    --theme-text-secondary: #666666;
+    --theme-accent: #007BFF;
+    --theme-success: #4CAF50;
+    --theme-warning: #FFC107;
+    --theme-error: #FF0000;
+    --theme-info: #0288D1;
+    
+    /* Typography */
+    --font-primary: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-heading: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    
+    /* Spacing and Layout */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #007BFF 0%, #0056B3 100%);
+    --gradient-secondary: linear-gradient(135deg, #FF7F50 0%, #E56B3E 100%);
+    --gradient-background: linear-gradient(135deg, #FFFFFF 0%, #F0F5F5 100%);
+  }
+
+  /* Modern Theme */
+  .theme-modern {
+    --theme-primary: #007BFF;
+    --theme-secondary: #FF7F50;
+    --theme-background: #F0F5F5;
+    --theme-surface: #FFFFFF;
+    --theme-text-primary: #333333;
+    --theme-text-secondary: #666666;
+    --theme-accent: #007BFF;
+    
+    --font-primary: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-heading: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    
+    --gradient-primary: linear-gradient(135deg, #007BFF 0%, #0056B3 100%);
+    --gradient-secondary: linear-gradient(135deg, #FF7F50 0%, #E56B3E 100%);
+    --gradient-background: linear-gradient(135deg, #FFFFFF 0%, #F0F5F5 100%);
+  }
+
+  /* Festive Theme */
+  .theme-festive {
+    --theme-primary: #007BFF;
+    --theme-secondary: #FF7F50;
+    --theme-background: #E6E6FF; /* Lavender */
+    --theme-surface: #FFFFFF;
+    --theme-text-primary: #333333;
+    --theme-text-secondary: #666666;
+    --theme-accent: #00FF7F; /* Spring Green */
+    
+    --font-primary: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --font-heading: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Lora', ui-serif, Georgia, serif;
+    
+    --gradient-primary: linear-gradient(135deg, #007BFF 0%, #00FF7F 100%);
+    --gradient-secondary: linear-gradient(135deg, #FF7F50 0%, #FFC107 100%);
+    --gradient-background: linear-gradient(135deg, #FFFFFF 0%, #E6E6FF 100%);
+    
+    /* Festive specific colors */
+    --theme-festive-green: #00FF7F;
+    --theme-festive-lavender: #E6E6FF;
+    --theme-festive-amber: #FFC107;
+  }
+ 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+ 
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+ 
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    background: var(--theme-background);
+    color: var(--theme-text-primary);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+  }
+  
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+  
+  .font-body {
+    font-family: var(--font-body);
+  }
+  
+  .text-theme-primary {
+    color: var(--theme-text-primary);
+  }
+  
+  .text-theme-secondary {
+    color: var(--theme-text-secondary);
+  }
+  
+  .bg-theme-primary {
+    background-color: var(--theme-primary);
+  }
+  
+  .bg-theme-secondary {
+    background-color: var(--theme-secondary);
+  }
+  
+  .bg-theme-surface {
+    background-color: var(--theme-surface);
+  }
+  
+  .bg-theme-accent {
+    background-color: var(--theme-accent);
+  }
+  
+  .border-theme-primary {
+    border-color: var(--theme-primary);
+  }
+  
+  .shadow-theme-sm {
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .shadow-theme-md {
+    box-shadow: var(--shadow-md);
+  }
+  
+  .shadow-theme-lg {
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-background {
+    background: var(--gradient-background);
+  }
+  
+  /* Animations for festive theme */
+  .theme-festive .animate-gentle-pulse {
+    animation: gentlePulse 2s ease-in-out infinite;
+  }
+  
+  .theme-festive .animate-gentle-bounce {
+    animation: gentleBounce 1s ease-in-out infinite;
+  }
+  
+  @keyframes gentlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+  
+  @keyframes gentleBounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-2px); }
+    60% { transform: translateY(-1px); }
+  }
+} 

@@ -1,0 +1,9 @@
+{
+  "framework": "nextjs",
+  "env": {
+    "NEXT_PUBLIC_CONVEX_URL": "https://quixotic-clownfish-341.convex.cloud",
+    "NEXT_PUBLIC_ENABLE_ANALYTICS": "true",
+    "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_cHJlY2lzZS1yYXB0b3ItOTcuY2xlcmsuYWNjb3VudHMuZGV2JA",
+    "CLERK_SECRET_KEY": "sk_test_A4X6aFUq5n7e2ORPBw9lqZc2SgIrOLrxtZyPLiBskP"
+  }
+} 

@@ -1,21 +1,101 @@
-# Cursor Rules for YPO SF Gold Chapter Management Platform
+# Cursor Rules for YPO SF Gold Community Platform
 
-These are persistent rules for Cursor's AI to follow in all chats/sessions. Copy each rule's content into Cursor's AI Settings > Rules section. Rules ensure consistency with the project stack, process, and standards.
+## Tech Stack Adherence
 
-## Rule 1: Universal Style/Theme Application
-Always apply the project's style and theme standards universally to all components, pages, and panels (including admin panels, directory, events). Use Material-UI ThemeProvider + Tailwind CSS variables for festive/modern toggle. Ensure consistency: No overrides; root-level provider for global application. Reference /docs/Style_Guide.md for colors, typography, components, and responsiveness. When generating or editing code, check and enforce theme portability (modular JS objects for easy new theme addition).
+### Rule 1: Framework & Language Standards
+- Always use Next.js 14+ with TypeScript
+- Use React 18+ hooks and patterns
+- Implement proper server/client component patterns ("use client" directive when needed)
+- Use Convex for all backend operations (queries, mutations, actions)
+- Use Clerk for authentication (no custom auth implementations)
 
-## Rule 2: Follow Tech Stack and Best Practices
-Code exclusively in the project's tech stack: Next.js frontend (React 18), Material-UI + Tailwind CSS + shadcn/ui (for components), Convex backend/DB (reactive queries/mutations/actions, auth, storage). Use TypeScript throughout. Follow best practices: DRY code, ESLint, testing (Jest/RTL/Supertest), mobile-first (responsive, touch-friendly), accessibility (WCAG, ARIA). Implement security: Convex auth with OAuth, magic links, 2FA TOTP, 90-day persistent sessions with revocation. Reference /docs/Tech_Stack.md for details.
+### Rule 2: UI Component Standards
+- Use shadcn/ui components as the primary UI library
+- Integrate Material-UI components where shadcn/ui doesn't provide functionality
+- Use Tailwind CSS for styling with CSS variables from globals.css
+- Never use hardcoded colors - always use CSS variables from style guide
+- Follow the component structure: shadcn/ui > Material-UI > custom components
 
-## Rule 3: Documentation and Artifacts
-Always update or reference project artifacts in Markdown (/docs/ folder): PRD.md, Tech_Stack.md, Style_Guide.md, Features_List.md, Context.md. When generating code, include JSDoc comments and append changes to relevant docs (e.g., "Added task: Implement add to calendar in Features_List.md"). Ensure code is portable (Docker for local, Convex for easy export).
+### Rule 3: Theme Implementation
+- Always use the theme context from `@/lib/theme-context`
+- Support both "festive" and "modern" themes
+- Use CSS variables defined in `src/styles/globals.css`
+- Fonts: Festive (Poppins headings, Lora body), Modern (Inter for all)
+- Colors: Primary #007BFF, Secondary #FF7F50, Festive accents, Modern grays
 
-## Rule 4: Project Workflow and Process
-Follow the agile workflow: High-level to concrete tasks with roll-ups. Reference /docs/Planning_Checklist.md for requirements gathering and to resume categories (e.g., Category 5: Data Model & Technical Details). When coding, break into small tasks with checklists. Use Convex for real-time (e.g., announcements sync). Prioritize MVP timeline (live July 28, 2025).
+### Rule 4: File Structure & Imports
+- Main application code in `yposfgold-community-platform/src/`
+- Use absolute imports with `@/` prefix
+- Follow the structure: `@/components/`, `@/lib/`, `@/app/`, `@/hooks/`
+- Export components as both named and default exports for flexibility
 
-## Rule 5: Feature Implementation Guidelines
-For features like events: Use Convex actions for scraping (Cheerio for YPO URLs), storage for photos (Sharp/EXIF), .ics generation for "add to calendar" (include location/Cvent link). Ensure opt-in privacy for data sharing. Test for 200 users/low traffic.
+### Rule 5: Component Patterns
+- Use MainLayout wrapper for all pages
+- Implement proper loading states and error boundaries
+- Use Convex hooks (useQuery, useMutation, useAction) for data operations
+- Follow accessibility standards (ARIA labels, keyboard navigation)
 
-## Rule 6: Checklist and Documentation Maintenance
-Always reference /docs/Planning_Checklist.md for project progress and suggest updates to status (e.g., mark categories as Completed/In Progress/Pending). When generating code or features, check the checklist for relevant categories and append changes to artifacts (e.g., PRD.md, Features_List.md with "Last Updated: [Date]"). Ensure all docs remain consistent and up-to-date; propose additions like version notes if needed.
+### Rule 6: Style Guide Compliance
+- Border radius: 8px for buttons/cards
+- Hover effects: scale(1.05) with 0.2s transition
+- Box shadows: `0 2px 4px rgba(0,0,0,0.1)` for cards
+- Mobile-first responsive design with breakpoints at 768px, 1024px
+- Use consistent spacing and typography scales
+
+### Rule 7: Documentation & Testing
+- Always include TypeScript interfaces for component props
+- Add accessibility features (ARIA labels, keyboard navigation)
+- Update documentation artifacts when making structural changes
+- Use proper error handling with toast notifications
+
+### Rule 8: Real-time & Performance
+- Prioritize Convex real-time queries for dynamic UI updates
+- Include error boundaries in React components
+- Use proper loading states and skeleton screens
+- Implement proper memoization for expensive operations
+
+### Rule 9: Code Review & Quality
+- Review v0-generated code before integration
+- Ensure all components follow established patterns
+- Maintain DRY principles and avoid code duplication
+- Follow ESLint and TypeScript strict mode requirements
+
+### Rule 10: Authentication & Security
+- Use Clerk hooks for authentication state
+- Implement proper route protection with middleware
+- Handle authentication errors gracefully
+- Follow security best practices for data handling
+
+### Rule 11: Troubleshooting
+- Whenever you take a troubleshooting step that doesn't resolve the issue and are going to try something else, roll back the change you made in the failed attempt.
+
+## Quick Reference
+
+### Colors (CSS Variables)
+- Primary: `var(--primary)` (#007BFF)
+- Secondary: `var(--secondary)` (#FF7F50)
+- Background: `var(--background)`
+- Card: `var(--card)`
+- Festive accent: `var(--festive-green)` (#00FF7F)
+- Modern accent: `var(--modern-gray)` (#F0F5F5)
+
+### Typography
+- Festive headings: `var(--font-poppins)`
+- Festive body: `var(--font-lora)`
+- Modern all: `var(--font-inter)`
+
+### Common Patterns
+- Button: `<Button variant="default" className="hover:scale-105 transition-all">`
+- Card: `<Card className="shadow-md border-0">`
+- Layout: `<MainLayout><Container>...</Container></MainLayout>`
+- Theme: `const { theme, toggleTheme } = useTheme()`
+
+## Enforcement Notes
+- Never deviate from the established color palette
+- Always use the theme context for consistent theming
+- Maintain component consistency across all pages
+- Update documentation when making architectural changes
+description:
+globs:
+alwaysApply: false
+---

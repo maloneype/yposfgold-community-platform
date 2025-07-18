@@ -1,3 +1,54 @@
----
+# GitHub Sync Rules - YPO SF Gold Community Platform
+
+## Repository Structure
+- Main branch: `main`
+- Repository: `yposfgold-community-platform`
+- Application code: `yposfgold-community-platform/src/`
+- Documentation: `_docs/`
+
+## Commit Standards
+- Use conventional commits format
+- Include meaningful commit messages
+- Reference issues or PRs when applicable
+- Keep commits focused and atomic
+
+## Branch Strategy
+- Work on feature branches for major changes
+- Use descriptive branch names
+- Merge to main after testing
+- Keep main branch stable and deployable
+
+## File Management
+- Keep documentation in sync with code changes
+- Update relevant docs when adding features
+- Maintain clean file structure
+- Remove deprecated or unused files
+
+## CI/CD Integration
+- Ensure all changes pass linting
+- Maintain TypeScript compliance
+- Follow the deployment configuration in vercel.json
+- Test changes before pushing
+
+## Issue Tracking
+- Use GitHub Issues for bug reports and feature requests
+- Reference issues in commit messages
+- Keep issues updated with progress
+- Close issues when resolved
+
+## Documentation Sync
+- Update README files when functionality changes
+- Keep setup guides current
+- Maintain feature lists and next steps
+- Update PRD when adding major features
+
+## Code Review Standards
+- Follow the established coding standards
+- Check for security vulnerabilities
+- Ensure accessibility compliance
+- Verify mobile responsiveness
+- Test authentication flows
+description:
+globs:
 alwaysApply: false
 ---

@@ -1,15 +1,50 @@
+# Overall Behavior Rules - YPO SF Gold Community Platform
+
+## Code Generation Philosophy
+- Always prioritize working, production-ready code
+- Follow the established architecture patterns
+- Maintain consistency with existing codebase
+- Focus on user experience and accessibility
+
+## Response Format
+- Provide clear, concise explanations
+- Include relevant code examples
+- Reference documentation when making changes
+- Explain trade-offs and decisions
+
+## Project Context Awareness
+- Remember this is a community platform for YPO SF Gold Chapter
+- Target users: ~200 members, spouses, and officers
+- Features: Directory, Events, Photos, Announcements, Admin
+- Timeline: MVP by July 28, 2025, Full version by August 11, 2025
+
+## Development Workflow
+- Follow the established tech stack (Next.js, TypeScript, Convex, Clerk)
+- Use the component patterns defined in the style guide
+- Test changes thoroughly before suggesting them
+- Consider mobile-first responsive design
+- Implement proper error handling and loading states
+
+## Communication Style
+- Be direct and helpful
+- Explain complex concepts clearly
+- Provide actionable solutions
+- Reference the project documentation when relevant
+- Suggest improvements while maintaining existing functionality
+
+## Quality Standards
+- Ensure all code is TypeScript compliant
+- Follow accessibility best practices
+- Maintain the established file structure
+- Use consistent naming conventions
+- Implement proper error boundaries
+
+## Documentation Updates
+- Update relevant documentation when making structural changes
+- Keep component documentation current
+- Maintain the features list and next steps
+- Update the PRD when adding new functionality
+description:
+globs:
+alwaysApply: false
 ---
-alwaysApply: true
----
-
-// General guidelines
-Always use Markdown for documentation and README files
-Maintain the existing structure of the README.md file
-
-Include a summary at the end of every response
-After providing a detailed response, add a brief summary at the end that encapsulates the main points or conclusions.
-This summary should be concise, ideally one or two sentences, and should highlight the key takeaways from the response.
-This summary should always start with the header "SUMMARY" in all caps
-
-// Documentation
-Please maintain a Markdown file that documents a running list of each chat request
