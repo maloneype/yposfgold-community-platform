@@ -223,4 +223,183 @@ export const findMatchingEvents = query({
     
     return events;
   },
+});
+
+// Get photo reactions for a specific photo
+export const getPhotoReactions = query({
+  args: { photoId: v.id("photos") },
+  handler: async (ctx, args) => {
+    const reactions = await ctx.db
+      .query("photo_reactions")
+      .withIndex("by_photo", (q) => q.eq("photo_id", args.photoId))
+      .collect();
+    
+    // Group reactions by type and count
+    const reactionCounts = reactions.reduce<Record<string, number>>((acc, reaction) => {
+      acc[reaction.reaction_type] = (acc[reaction.reaction_type] || 0) + 1;
+      return acc;
+    }, {});
+    
+    return {
+      reactions,
+      counts: reactionCounts,
+      total: reactions.length,
+    };
+  },
+});
+
+// Get user's reaction to a specific photo
+export const getUserReaction = query({
+  args: { 
+    photoId: v.id("photos"),
+    userId: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const reaction = await ctx.db
+      .query("photo_reactions")
+      .withIndex("by_photo", (q) => q.eq("photo_id", args.photoId))
+      .filter((q) => q.eq(q.field("user_id"), args.userId))
+      .unique();
+    
+    return reaction;
+  },
+});
+
+// Add or update a photo reaction
+export const addReaction = mutation({
+  args: {
+    photoId: v.id("photos"),
+    userId: v.string(),
+    chapterId: v.string(),
+    reactionType: v.union(v.literal("like"), v.literal("love"), v.literal("wow"), v.literal("laugh")),
+  },
+  handler: async (ctx, args) => {
+    // Check if user already has a reaction to this photo
+    const existingReaction = await ctx.db
+      .query("photo_reactions")
+      .withIndex("by_photo", (q) => q.eq("photo_id", args.photoId))
+      .filter((q) => q.eq(q.field("user_id"), args.userId))
+      .unique();
+    
+    if (existingReaction) {
+      // Update existing reaction
+      await ctx.db.patch(existingReaction._id, {
+        reaction_type: args.reactionType,
+        created_at: Date.now(),
+      });
+      return existingReaction._id;
+    } else {
+      // Create new reaction
+      const reactionId = await ctx.db.insert("photo_reactions", {
+        photo_id: args.photoId,
+        user_id: args.userId,
+        chapter_id: args.chapterId,
+        reaction_type: args.reactionType,
+        created_at: Date.now(),
+      });
+      return reactionId;
+    }
+  },
+});
+
+// Remove a photo reaction
+export const removeReaction = mutation({
+  args: {
+    photoId: v.id("photos"),
+    userId: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const existingReaction = await ctx.db
+      .query("photo_reactions")
+      .withIndex("by_photo", (q) => q.eq("photo_id", args.photoId))
+      .filter((q) => q.eq(q.field("user_id"), args.userId))
+      .unique();
+    
+    if (existingReaction) {
+      await ctx.db.delete(existingReaction._id);
+      return existingReaction._id;
+    }
+    
+    return null;
+  },
+});
+
+// Get photos with reaction counts
+export const listWithReactions = query({
+  args: { chapterId: v.string() },
+  handler: async (ctx, args) => {
+    const photos = await ctx.db
+      .query("photos")
+      .withIndex("by_chapter", (q) => q.eq("chapter_id", args.chapterId))
+      .order("desc")
+      .collect();
+    
+    // Get reaction counts for each photo
+    const photosWithReactions = await Promise.all(
+      photos.map(async (photo) => {
+        const reactions = await ctx.db
+          .query("photo_reactions")
+          .withIndex("by_photo", (q) => q.eq("photo_id", photo._id))
+          .collect();
+        
+        const reactionCounts = reactions.reduce<Record<string, number>>((acc, reaction) => {
+          acc[reaction.reaction_type] = (acc[reaction.reaction_type] || 0) + 1;
+          return acc;
+        }, {});
+        
+        return {
+          ...photo,
+          reactions: {
+            counts: reactionCounts,
+            total: reactions.length,
+          },
+        };
+      })
+    );
+    
+    return photosWithReactions;
+  },
+});
+
+// Auto-associate photos with events based on metadata
+export const autoAssociateWithEvents = mutation({
+  args: { chapterId: v.string() },
+  handler: async (ctx, args) => {
+    // Get all photos without event associations
+    const orphanedPhotos = await ctx.db
+      .query("photos")
+      .withIndex("by_chapter", (q) => q.eq("chapter_id", args.chapterId))
+      .filter((q) => q.eq(q.field("event_id"), undefined))
+      .collect();
+    
+    // Get all events for the chapter
+    const events = await ctx.db
+      .query("events")
+      .withIndex("by_chapter", (q) => q.eq("chapter_id", args.chapterId))
+      .collect();
+    
+    let associatedCount = 0;
+    
+    for (const photo of orphanedPhotos) {
+      if (photo.metadata?.date) {
+        // Find matching events (within 24 hours)
+        const oneDayMs = 24 * 60 * 60 * 1000;
+        const matchingEvents = events.filter(event => {
+          const photoDate = photo.metadata.date!;
+          return photoDate >= (event.start_time - oneDayMs) && 
+                 photoDate <= (event.end_time + oneDayMs);
+        });
+        
+        // If we found exactly one matching event, associate it
+        if (matchingEvents.length === 1) {
+          await ctx.db.patch(photo._id, {
+            event_id: matchingEvents[0]._id,
+          });
+          associatedCount++;
+        }
+      }
+    }
+    
+    return { associatedCount, totalOrphaned: orphanedPhotos.length };
+  },
 }); 

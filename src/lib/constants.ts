@@ -19,21 +19,24 @@ function validateEnvVars() {
   const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
   
   if (missingVars.length > 0) {
-    console.error('Missing required environment variables:', missingVars);
+    console.warn('Missing required environment variables:', missingVars);
+    console.warn('Make sure your .env.local file is properly configured');
     if (process.env.NODE_ENV === 'production') {
       throw new Error(`Missing required environment variables: ${missingVars.join(', ')}`);
     }
   }
 }
 
-// Validate environment variables on module load
-validateEnvVars();
+// Validate environment variables on module load (only in production)
+if (process.env.NODE_ENV === 'production') {
+  validateEnvVars();
+}
 
 // Environment Configuration
 export const ENV_CONFIG = {
   // Core Configuration
-  CONVEX_URL: process.env.NEXT_PUBLIC_CONVEX_URL!,
-  CLERK_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY!,
+  CONVEX_URL: process.env.NEXT_PUBLIC_CONVEX_URL || 'https://quixotic-clownfish-341.convex.cloud',
+  CLERK_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || 'pk_test_cHJlY2lzZS1yYXB0b3ItOTcuY2xlcmsuYWNjb3VudHMuZGV2JA',
   
   // Application Configuration
   APP_NAME: process.env.NEXT_PUBLIC_APP_NAME || 'YPO SF Gold Community Platform',

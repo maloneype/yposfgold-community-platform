@@ -20,6 +20,7 @@ import type * as clerk from "../clerk.js";
 import type * as events from "../events.js";
 import type * as notifications from "../notifications.js";
 import type * as photos from "../photos.js";
+import type * as seeding from "../seeding.js";
 import type * as users from "../users.js";
 
 /**
@@ -38,6 +39,7 @@ declare const fullApi: ApiFromModules<{
   events: typeof events;
   notifications: typeof notifications;
   photos: typeof photos;
+  seeding: typeof seeding;
   users: typeof users;
 }>;
 export declare const api: FilterApi<

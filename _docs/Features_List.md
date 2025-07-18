@@ -42,6 +42,10 @@
     - [x] Support multiple uploads at once.
     - [x] Auto-tag with date/GPS metadata and group by event (miscellaneous folder if no match).
     - [x] Optimize high-res/live photos (<2MB) using Sharp.
+    - [x] Add photo reactions system (like, love, wow, laugh).
+    - [x] Implement direct photo downloads to device.
+    - [x] Enable native sharing functionality.
+    - [x] Display real-time reaction counts and user tracking.
 
 ### Epic: Admin Panel
 - **User Story**: As an admin, I can manage users, events, and announcements so that I can maintain the platform.
@@ -50,6 +54,9 @@
     - [x] Send invitation emails (single/multiple with magic links).
     - [x] Create/manage events (main/small/community-led types).
     - [x] Post announcements with text/image/video and reorder list.
+    - [x] Database seeding system for development and testing.
+    - [x] Compartmentalized placeholder data management.
+    - [x] One-click data population and cleanup functionality.
 
 ## Theme: Integrations & Enhancements
 ### Epic: Notifications & Analytics

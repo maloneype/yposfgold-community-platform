@@ -28,7 +28,7 @@ NEXT_PUBLIC_MIXPANEL_TOKEN=your_mixpanel_token_here
 # Application Configuration
 NEXT_PUBLIC_APP_NAME=YPO SF Gold Community Platform
 NEXT_PUBLIC_APP_VERSION=1.0.0
-NEXT_PUBLIC_CHAPTER_ID=chapter1
+NEXT_PUBLIC_CHAPTER_ID=placeholder_chapter_ypo_sf_gold
 
 # Development Configuration
 NODE_ENV=development
@@ -61,7 +61,7 @@ NEXT_PUBLIC_ENABLE_ANALYTICS=true
 # Application Configuration
 NEXT_PUBLIC_APP_NAME=YPO SF Gold Community Platform
 NEXT_PUBLIC_APP_VERSION=1.0.0
-NEXT_PUBLIC_CHAPTER_ID=chapter1
+NEXT_PUBLIC_CHAPTER_ID=placeholder_chapter_ypo_sf_gold
 
 # Production Configuration
 NODE_ENV=production
@@ -197,5 +197,22 @@ npm run test
 # Build for production
 npm run build
 ```
+
+## Database Seeding
+
+For development and testing, the project includes a comprehensive seeding system:
+
+```bash
+# Seed placeholder data (20 users, 10 events, 5 announcements, 51 photos)
+npx convex run seeding:seedPlaceholderData
+
+# Check placeholder data status
+npx convex run seeding:checkPlaceholderData
+
+# Clear all placeholder data
+npx convex run seeding:clearPlaceholderData
+```
+
+All placeholder data uses the chapter ID `placeholder_chapter_ypo_sf_gold` for safe compartmentalization.
 
 Last Updated: January 2025 

@@ -8,8 +8,11 @@ A centralized web platform for the YPO SF Gold Chapter (~200 users) to serve as 
 - **Theme System**: Toggle between festive and modern themes
 - **Member Directory**: Searchable directory with privacy controls
 - **Events System**: Event listing with Cvent integration
-- **Photos Management**: Photo uploads with event association
+- **Photos Management**: Photo uploads with event association and reactions
+- **Photo Reactions**: Like, love, wow, laugh reactions with real-time counts
+- **Photo Downloads**: Direct downloads to device with native sharing
 - **Admin Panel**: User, event, and content management
+- **Database Seeding**: Development tools for testing with placeholder data
 - **Notifications System**: In-app notifications for events and announcements
 - **Analytics Dashboard**: User engagement and platform usage tracking
 
@@ -89,6 +92,23 @@ The project requires two development servers:
 
 1. **Next.js Frontend**: `npm run dev` (runs on http://localhost:3000)
 2. **Convex Backend**: `npx convex dev` (syncs backend functions)
+
+### Database Seeding
+
+For development and testing, the project includes a comprehensive seeding system:
+
+```bash
+# Seed placeholder data (20 users, 10 events, 5 announcements, 51 photos)
+npx convex run seeding:seedPlaceholderData
+
+# Check placeholder data status
+npx convex run seeding:checkPlaceholderData
+
+# Clear all placeholder data
+npx convex run seeding:clearPlaceholderData
+```
+
+All placeholder data is safely compartmentalized and can be easily removed without affecting real data.
 
 ## Documentation
 

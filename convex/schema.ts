@@ -132,4 +132,13 @@ export default defineSchema({
     features_used: v.array(v.string()),
     pages_visited: v.array(v.string()),
   }).index("by_chapter", ["chapter_id"]).index("by_user", ["user_id"]).index("by_date", ["date"]),
+  
+  // Photo reactions table for likes/loves/reactions
+  photo_reactions: defineTable({
+    photo_id: v.id("photos"),
+    user_id: v.string(),
+    chapter_id: v.string(),
+    reaction_type: v.union(v.literal("like"), v.literal("love"), v.literal("wow"), v.literal("laugh")),
+    created_at: v.number(),
+  }).index("by_photo", ["photo_id"]).index("by_user", ["user_id"]).index("by_chapter", ["chapter_id"]),
 }); 
