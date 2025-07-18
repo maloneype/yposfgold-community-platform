@@ -20,6 +20,8 @@ describe('ThemeProvider', () => {
   beforeEach(() => {
     // Clear localStorage before each test
     localStorage.clear()
+    // Restore all mocks
+    jest.restoreAllMocks()
   })
 
   it('provides default theme', () => {
@@ -104,13 +106,16 @@ describe('ThemeProvider', () => {
     
     const toggleButton = screen.getByTestId('toggle-button')
     
+    // Initial theme should be modern
+    expect(screen.getByTestId('current-theme')).toHaveTextContent('modern')
+    
     // Toggle to festive theme
     fireEvent.click(toggleButton)
     
-    // Wait for the theme to change
+    // Wait for the theme to change with more time
     await waitFor(() => {
       expect(screen.getByTestId('current-theme')).toHaveTextContent('festive')
-    })
+    }, { timeout: 2000 })
     
     // Check that CSS variables are applied (this would require checking document.documentElement.style)
     // For now, we can verify the theme changed

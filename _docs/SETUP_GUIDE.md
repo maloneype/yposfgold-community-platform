@@ -44,8 +44,40 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/directory
    npm run dev
    ```
 
-5. **Access the application**:
+5. **Start the Convex backend** (in a separate terminal):
+   ```bash
+   npx convex dev
+   ```
+
+6. **Access the application**:
    Open your browser and navigate to `http://localhost:3000`
+
+## Testing
+
+The project includes comprehensive testing infrastructure:
+
+### Unit Tests
+```bash
+npm test                  # Run all unit tests
+npm run test:watch        # Run tests in watch mode
+```
+
+### E2E Tests
+```bash
+npm run test:e2e         # Run Cypress E2E tests
+```
+
+### Performance Tests
+```bash
+npm run test:lighthouse  # Run Lighthouse performance tests
+```
+
+### CI/CD
+The project includes GitHub Actions workflows that automatically:
+- Run all tests on pull requests
+- Build and deploy to staging/production
+- Run security scans and dependency checks
+- Monitor performance with Lighthouse CI
 
 ## Authentication Setup
 

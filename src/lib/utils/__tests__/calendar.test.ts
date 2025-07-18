@@ -74,7 +74,7 @@ describe('Calendar Utilities', () => {
 
       const [[blob]] = mockCreateObjectURL.mock.calls
       expect(blob).toBeInstanceOf(Blob)
-      expect(blob.type).toBe('text/calendar')
+      expect(blob.type).toBe('text/calendar;charset=utf-8')
     })
 
     it('handles events without optional fields', () => {

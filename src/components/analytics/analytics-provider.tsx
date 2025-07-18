@@ -52,11 +52,14 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
       
       // Update user activity if signed in
       if (isSignedIn) {
+        const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
         updateUserActivityMutation({
           chapter_id,
           user_id: user.id,
-          page_visited: pathname,
-          session_duration: 0 // Just visiting, not tracking duration yet
+          date: today,
+          session_duration: 0, // Just visiting, not tracking duration yet
+          features_used: [], // No features used yet on page visit
+          pages_visited: [pathname] // Convert to array
         });
       }
     }

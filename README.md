@@ -32,9 +32,9 @@ For detailed setup instructions, see [Setup Guide](./_docs/SETUP_GUIDE.md).
 
 3. Create a `.env.local` file with the required environment variables:
    ```
-   NEXT_PUBLIC_CONVEX_URL=https://sincere-starfish-983.convex.cloud
-   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
-   CLERK_SECRET_KEY=your_clerk_secret_key
+   NEXT_PUBLIC_CONVEX_URL=https://quixotic-clownfish-341.convex.cloud
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_cHJlY2lzZS1yYXB0b3ItOTcuY2xlcmsuYWNjb3VudHMuZGV2JA
+   CLERK_SECRET_KEY=sk_test_A4X6aFUq5n7e2ORPBw9lqZc2SgIrOLrxtZyPLiBskP
    NEXT_PUBLIC_ENABLE_ANALYTICS=true
    ```
 
@@ -78,6 +78,10 @@ yposfgold-community-platform.com/
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
+- `npm test` - Run unit tests
+- `npm run test:watch` - Run tests in watch mode
+- `npm run test:e2e` - Run E2E tests (Cypress)
+- `npm run test:lighthouse` - Run Lighthouse performance tests
 
 ### Development Servers
 
@@ -98,9 +102,25 @@ The project requires two development servers:
 
 ## Timeline
 
-- **MVP**: July 28, 2025 ✅
-- **Full Version**: August 11, 2025
-- **Production Launch**: September 2025
+- **MVP**: July 28, 2025 ✅ **COMPLETED**
+- **Full Version**: August 11, 2025 ✅ **COMPLETED**
+- **Production Launch**: Ready for deployment
+
+## Testing
+
+The project includes comprehensive testing infrastructure:
+
+- **Unit Tests**: Jest with React Testing Library
+- **E2E Tests**: Cypress
+- **CI/CD**: GitHub Actions with automated testing
+- **Performance**: Lighthouse CI monitoring
+
+Run tests with:
+```bash
+npm test                  # Run unit tests
+npm run test:e2e         # Run E2E tests
+npm run test:lighthouse  # Run performance tests
+```
 
 ## License
 

@@ -64,7 +64,7 @@ export const updateUserActivity = mutation({
     chapter_id: v.string(),
     user_id: v.string(),
     date: v.string(), // ISO date string (YYYY-MM-DD)
-    session_duration: v.number(),
+    session_duration: v.float64(),
     features_used: v.array(v.string()),
     pages_visited: v.array(v.string()),
   },
